@@ -19,6 +19,8 @@ namespace Calculator
             DecimalPoint,
             PlusMminusSign,
             Backspace,
+            ClearAll,
+            ClearEntry,
             Undefined
         }
 
@@ -37,7 +39,7 @@ namespace Calculator
 
         private btnStruct[,] buttons =
         {
-            { new btnStruct('%'), new btnStruct('\u0152'), new btnStruct('C'), new btnStruct('\u232B',SymbolType.Backspace) },
+            { new btnStruct('%'), new btnStruct('\u0152',SymbolType.ClearEntry), new btnStruct('C',SymbolType.ClearAll), new btnStruct('\u232B',SymbolType.Backspace) },
             { new btnStruct('\u215F'), new btnStruct('\u00B2'), new btnStruct('\u221A'), new btnStruct('\u00F7') },
             { new btnStruct('7',SymbolType.Number, true), new btnStruct('8',SymbolType.Number, true), new btnStruct('9',SymbolType.Number, true), new btnStruct('\u00D7',SymbolType.Operator) },
             { new btnStruct('4',SymbolType.Number, true), new btnStruct('5',SymbolType.Number, true), new btnStruct('6',SymbolType.Number, true), new btnStruct('-',SymbolType.Operator) },
@@ -113,10 +115,25 @@ namespace Calculator
                     if (lblResult.Text.Length == 0 || lblResult.Text == "-0" || lblResult.Text == "-")
                         lblResult.Text = "0";
                     break;
+                case SymbolType cler
                 case SymbolType.Undefined:
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void lblResult_TextChanged(object sender, EventArgs e)
+        {
+            if(lblResult.Text.Length > 16) lblResult.Text = lblResult.Text.Substring(0, 16);
+            if (lblResult.Text.Length>11)
+            {
+                float delta = lblResult.Text.Length - 11;
+                lblResult.Font = new Font("Segoe UI", 36 -delta*(float)2.8, FontStyle.Regular);
+            }
+            else
+            {
+                lblResult.Font = new Font("Segoe UI", 36 , FontStyle.Bold);
             }
         }
     }
