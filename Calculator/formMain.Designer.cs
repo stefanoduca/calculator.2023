@@ -30,6 +30,8 @@
         {
             this.lblResult = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblResult
@@ -46,11 +48,20 @@
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.label1);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(320, 30);
             this.panelTop.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(273, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 0;
             // 
             // formMain
             // 
@@ -65,6 +76,8 @@
             this.ShowIcon = false;
             this.Text = "Calcolatrice";
             this.Load += new System.EventHandler(this.formMain_Load);
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -73,6 +86,7 @@
 
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.Label label1;
     }
 }
 
